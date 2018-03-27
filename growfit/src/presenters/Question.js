@@ -1,17 +1,58 @@
 import React from 'react';
-import QuestionView from './QuestioView'
 
-const Question = ({ res, index, onOptionClick, i, next, skip }) => {
-  let data = Array.from(res)
-  let indexList = Array.from(index)
-  return (<div>
 
-    {data ?
-      data.map((item) =>
-        <QuestionView index={indexList} data={item} onOptionClick={onOptionClick} i={i} next={next} skip={skip} />) : 'hey'
-    }
-  </div>
-  )
-};
+const QuestionView = ({ questionList, onOptionClick, skip, index, next }) => {
+  const data = questionList[0]
+  return (
+    <div className="container" style={{ border: "1px solid " }} >
+      <div className="d-flex flex-column">
+        {next === undefined ?
+          <div className="md-auto p-2" >
+            <div className="d-flex justify-content-start">
+              <h4>{data[index].title}</h4>
+              <br />
+            </div>
+            <div className="d-flex justify-content-start">
+              {data[index].text}
+            </div>
+            <br />
+            {data[index].options.map(element => <div key={element.id} className="d-flex align-items-center">
 
-export default Question;
+              <button className='btn btn-light' onClick={(event) => {
+                return onOptionClick(event, element.id, data[index].answer_id, index, data[index + 1])
+              }}>  {element.text} </button>
+            </div>
+            )}
+          </div>
+          :
+
+          <div className="mr-auto p-2" >
+            <div className="d-flex justify-content-start">
+              <h4> {next.title} </h4>
+              <br />
+            </div>
+            <div className="d-flex justify-content-start">
+              {next.text}
+            </div>
+            <br />
+            {next.options.map(element => <div key={element.id} className="d-flex align-items-center" >
+
+              <button className='btn btn-light' onClick={(event) => {
+                return onOptionClick(event, element.id, next.answer_id, index, data[index + 1])
+              }}>  {element.text} </button>
+            </div>
+            )}
+          </div>
+        }
+        <div className="d-flex justify-content-end">
+          <button className='btn btn-light' onClick={(event) => { event.preventDefault(); skip(data[index + 1], index) }}> Skip </button>
+        </div>
+        <br />
+      </div>
+    </div>);
+}
+
+
+
+
+export default QuestionView;

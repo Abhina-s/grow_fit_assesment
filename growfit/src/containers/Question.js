@@ -3,19 +3,18 @@ import QuestionPresenter from '../presenters/Question';
 import history from '../history';
 
 const mapStateToProps = (state, ownProps) => {
+  /* returns the list of questions, the property index which represents the question being rendered and
+  the property next, which is the next question to be rendered */
   const testData = state.home.testData;
   let data = [];
-  let index = [];
-  let res = []
+  let questionList = []
   data.push(Object.values(testData))
-  index.push(Object.keys(testData))
-  data.map(value => res.push(value))
-  let i = state.question.id;
+  data.map(value => questionList.push(value))
+  let index = state.question.id;
   let next = state.question.data;
   return {
-    res,
-    index: index.map(value => value),
-    i,
+    questionList,
+    index,
     next
   }
 }
@@ -23,21 +22,21 @@ const mapStateToProps = (state, ownProps) => {
 const mapdispatchToProps = (dispatch, ownProps) => {
   let count = 0
   return {
-    onOptionClick: (event, id, answerId, i, next) => {
+    onOptionClick: (event, id, answerId, index, next) => {
       event.preventDefault();
       if (id === answerId) {
         dispatch({
-          type: 'ANSWER_QUESTION',
+          type: 'CORRECT_ANSWER',
           payload: true
         })
       }
       else {
         dispatch({
-          type: 'WRONG_QUESTION',
+          type: 'WRONG_ANSWER',
           payload: true
         })
       }
-      if (i + 1 === 10) {
+      if (index + 1 === 10) {
         history.push('/result');
       }
       dispatch({
@@ -46,7 +45,8 @@ const mapdispatchToProps = (dispatch, ownProps) => {
         id: count += 1
       })
     },
-    skip: (next, i) => {
+
+    skip: (next, index) => {
       dispatch({
         type: 'SKIP_QUESTION',
         payload: true,
@@ -56,7 +56,7 @@ const mapdispatchToProps = (dispatch, ownProps) => {
         payload: next,
         id: count += 1
       })
-      if (i + 1 === 10) {
+      if (index + 1 === 10) {
         history.push('/result');
       }
     }

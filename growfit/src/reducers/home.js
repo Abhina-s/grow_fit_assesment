@@ -6,6 +6,7 @@ const defaultState = {
 const home = (state = defaultState, action) => {
   switch (action.type) {
     case "FETCH_TEST_DATA":
+    //updates the store with the data fetched from API
       return Object.assign({}, state, {
         testData: action.payload,
         isFetched: true

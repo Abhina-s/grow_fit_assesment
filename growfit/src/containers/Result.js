@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import ResultPresenter from '../presenters/Result';
 
 const mapStateToProps = (state, ownProps) => {
-  let correctAnsweredCount = state.question.correctAnsweredCount;
-  let wrongAnsweredCount = state.question.wrongAnsweredCount
+  let correctlyAnsweredCount = state.question.correctlyAnsweredCount;
+  let wronglyAnsweredCount = state.question.wronglyAnsweredCount
 
   return {
-    correctAnsweredCount,
-    wrongAnsweredCount
+    correctlyAnsweredCount,
+    wronglyAnsweredCount
   }
 }
 

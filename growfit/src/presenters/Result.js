@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Result = ({ correctAnsweredCount, wrongAnsweredCount }) => (
-  <div className="container">
+const Result = ({ correctlyAnsweredCount, wronglyAnsweredCount }) => (
+  <div className="container" style={{margin:'100px'}}>
     <h4> Test Result </h4>
-    Number of  correctly answered questions are - {correctAnsweredCount}
+    Number of  correctly answered questions are - {correctlyAnsweredCount}
     <br />
-    Number of  wrongly answered questions are - {wrongAnsweredCount}
+    Number of  wrongly answered questions are - {wronglyAnsweredCount}
   </div>
 );
 
