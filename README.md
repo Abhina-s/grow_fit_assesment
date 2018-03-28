@@ -5,6 +5,6 @@ There is also option to skip the question. In the end of the test,
 the user will be given the tally of how many questions have been answered correctly and how many wrong.
 
 ## Steps to follow -
-Markup: * clone the repository
-        * npm install the node modules
-        * run the command npm start
+Markup : * clone the repository
+         * npm install the node modules
+         * run the command npm start
