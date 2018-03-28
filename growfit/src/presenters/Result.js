@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Result = ({ correctlyAnsweredCount, wronglyAnsweredCount }) => (
-  <div className="container" style={{margin:'100px'}}>
+  <div className="container" style={{ margin: '100px' }}>
     <h4> Test Result </h4>
     Number of  correctly answered questions are - {correctlyAnsweredCount}
     <br />

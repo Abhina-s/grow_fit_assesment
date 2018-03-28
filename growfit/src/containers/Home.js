@@ -2,24 +2,24 @@ import { connect } from 'react-redux';
 import HomePresenter from '../presenters/Home';
 import getData from '../actions/index';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = () => {
   return {
-  }
-}
+  };
+};
 
 
-const mapdispatchToProps = (dispatch, ownProps) => {
+const mapdispatchToProps = (dispatch) => {
   return {
     onClick: (event) => {
       event.preventDefault();
       dispatch(getData());
-    }
-  }
-}
+    },
+  };
+};
 
 const Home = connect(
   mapStateToProps,
-  mapdispatchToProps
+  mapdispatchToProps,
 )(HomePresenter);
 
 export default Home;

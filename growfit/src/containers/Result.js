@@ -1,26 +1,26 @@
 import { connect } from 'react-redux';
 import ResultPresenter from '../presenters/Result';
 
-const mapStateToProps = (state, ownProps) => {
-  let correctlyAnsweredCount = state.question.correctlyAnsweredCount;
-  let wronglyAnsweredCount = state.question.wronglyAnsweredCount
+const mapStateToProps = (state) => {
+  const correctlyAnsweredCount = state.question.correctlyAnsweredCount;
+  const wronglyAnsweredCount = state.question.wronglyAnsweredCount;
 
   return {
     correctlyAnsweredCount,
-    wronglyAnsweredCount
-  }
-}
+    wronglyAnsweredCount,
+  };
+};
 
 
-const mapdispatchToProps = (dispatch, ownProps) => {
+const mapdispatchToProps = () => {
   return {
 
-  }
-}
+  };
+};
 
 const Result = connect(
   mapStateToProps,
-  mapdispatchToProps
+  mapdispatchToProps,
 )(ResultPresenter);
 
 export default Result;

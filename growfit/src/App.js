@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Router,
-  Route
+  Route,
 } from 'react-router-dom';
 import history from './history';
 import './App.css';
